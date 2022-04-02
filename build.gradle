@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group 'io.hanbings'
+version '1.0-dev'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+}
+
+dependencies {
+    // https://hub.spigotmc.org/nexus/content/repositories/snapshots/
+    implementation 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
+
+    // https://mvnrepository.com/artifact/io.javalin/javalin
+    implementation 'io.javalin:javalin:4.4.0'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+    implementation 'org.slf4j:slf4j-simple:1.7.36'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2'
+}
+
+shadowJar {
+    // If conflicts are encountered, using commented-out statements usually resolves the problem.
+    // relocate 'org.eclipse.jetty', 'shadow.org.eclipse.jetty'
+
+    dependencies {
+        // Cannot use include, using include will not include javalin dependencies.
+        // So just filter Spigot's dependencies.
+        exclude(dependency('org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'))
+    }
+}

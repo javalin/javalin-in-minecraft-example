@@ -1,0 +1,4 @@
+name: JavalinInBukkit
+main: io.hanbings.javalin.bukkit.JavalinPlugin
+version: 1.0.0
+api_version: 1.13
