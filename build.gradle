@@ -14,9 +14,9 @@ repositories {
 
 dependencies {
     // https://hub.spigotmc.org/nexus/content/repositories/snapshots/
-    implementation 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
+    compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
     // https://mvnrepository.com/artifact/net.md-5/bungeecord-api
-    implementation 'net.md-5:bungeecord-api:1.16-R0.5-SNAPSHOT'
+    compileOnly 'net.md-5:bungeecord-api:1.16-R0.5-SNAPSHOT'
 
     // https://mvnrepository.com/artifact/io.javalin/javalin
     implementation 'io.javalin:javalin:4.4.0'
@@ -24,16 +24,4 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:1.7.36'
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2'
-}
-
-shadowJar {
-    // If conflicts are encountered, using commented-out statements usually resolves the problem.
-    // relocate 'org.eclipse.jetty', 'shadow.org.eclipse.jetty'
-
-    dependencies {
-        // Cannot use include, using include will not include javalin dependencies.
-        // So just filter Spigot's dependencies.
-        exclude(dependency('org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'))
-        exclude(dependency('net.md-5:bungeecord-api:1.16-R0.5-SNAPSHOT'))
-    }
 }

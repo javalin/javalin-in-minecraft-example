@@ -1,4 +1,4 @@
-package io.hanbings.javalin.bungesscord;
+package io.hanbings.javalin.bungeecord;
 
 import io.javalin.Javalin;
 import net.md_5.bungee.api.plugin.Plugin;
